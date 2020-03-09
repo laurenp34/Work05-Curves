@@ -15,8 +15,6 @@ int main(int argc, char **argv) {
   struct matrix * edges;
   struct matrix * transform;
 
-  edges = new_matrix(4, 4);
-  transform = new_matrix(4, 4);
 
   /* print_matrix(make_rotX(M_PI/4)); */
   /* printf("\n"); */
@@ -30,7 +28,8 @@ int main(int argc, char **argv) {
   else
     parse_file( "stdin", transform, edges, s );
 
-  
+
   free_matrix( edges );
   free_matrix( transform );
-}  
+
+}

@@ -88,6 +88,8 @@ void parse_file ( char * filename,
     struct matrix *tmp;
     double theta;
     char axis;
+    double step = 0.02; //step for parametric equations
+    double radius;
 
     if ( strncmp(line, "line", strlen(line)) == 0 ) {
       fgets(line, sizeof(line), f);
@@ -142,6 +144,12 @@ void parse_file ( char * filename,
 
       matrix_mult(tmp, transform);
     }//end rotate
+
+    else if ( strncmp(line, "circle", strlen(line)) == 0) {
+      fgets(line, sizeof(line), f);
+      sscanf(line, "%lf %lf %lf %lf\n", xvals,yvals,zvals,radius);
+      add_circle(edges,xvals[0],yvals[0],zvals[0],radius,step);
+    }
 
     else if ( strncmp(line, "ident", strlen(line)) == 0 ) {
       //printf("IDENT\t%s", line);
