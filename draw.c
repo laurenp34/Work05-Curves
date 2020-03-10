@@ -20,11 +20,12 @@
 void add_circle( struct matrix *edges,
                  double cx, double cy, double cz,
                  double r, double step ) {
-    int t,x,y; //t is parametric variable. x,y are current point to add to circle
+    double t,x,y; //t is parametric variable. x,y are current point to add to circle
     for (t=0;t<=1;t+=step) {
       x = r * cos(2*M_PI*t) + cx;
       y = r * sin(2*M_PI*t) + cy;
       add_point(edges,x,y,cz);
+      //printf("\n");
     }
 }
 
