@@ -151,7 +151,7 @@ void parse_file ( char * filename,
       //printf("%lf %lf %lf %lf\n", xvals[0],yvals[0],zvals[0],radius);
       print_matrix(edges);
       add_circle(edges,xvals[0],yvals[0],zvals[0],radius,step);
-      printf("hi\n");
+      //printf("hi\n");
     }
 
     else if ( strncmp(line, "ident", strlen(line)) == 0 ) {

@@ -52,6 +52,12 @@ void add_curve( struct matrix *edges,
                 double x2, double y2,
                 double x3, double y3,
                 double step, int type ) {
+    if (strncmp(type, "bezier", strlen(type)) == 0) {
+      
+    }
+    else if (strncmp(type, "hermite", strlen(type)) == 0) {
+
+    }
 }
 
 
