@@ -52,11 +52,39 @@ void add_curve( struct matrix *edges,
                 double x2, double y2,
                 double x3, double y3,
                 double step, int type ) {
-    if (strncmp(type, "bezier", strlen(type)) == 0) {
-      
-    }
-    else if (strncmp(type, "hermite", strlen(type)) == 0) {
+    //hermite:
+    if (type == 0) {
 
+    }
+    //bezier:
+    else if (type == 1) {
+
+    }
+    struct matrix * x_coefs = generate_curve_coefs(x0,x1,x2,x3,type);
+    struct matrix * y_coefs = generate_curve_coefs(y0,y1,y2,y3,type);
+    // struct matrix * t_vals = new_matrix(1,4); //stores 1,t,t^2,t^3 (current values)
+
+
+    double t,cur_x,cur_y;
+    for (t=0;t<=1;t+=step) {
+      //put in current t values to t_matrix
+      // t_vals->m[0][0] = t*t*t;
+      // t_vals->m[0][1] = t*t;
+      // t_vals->m[0][2] = t;
+      // t_vals->m[0][3] = 1;
+      // matrix_mult(x_coefs,t_vals);
+      // cur_x = t_vals->m[0][0];
+      cur_x = x_coefs->m[3][0] + t*(x_coefs->m[2][0] + t*(x_coefs->m[1][0] + x_coefs->m[0][0]*t));
+      //reset t_matrix
+      // t_vals->m[0][0] = t*t*t;
+      // t_vals->m[0][1] = t*t;
+      // t_vals->m[0][2] = t;
+      // t_vals->m[0][3] = 1;
+      // matrix_mult(y_coefs,t_vals);
+      // cur_y = t_vals->m[0][0];
+      cur_y = y_coefs->m[3][0] + t*(y_coefs->m[2][0] + t*(y_coefs->m[1][0] + y_coefs->m[0][0]*t));
+      //printf("adding: %lf %lf\n",cur_x,cur_y);
+      add_point(edges,cur_x,cur_y,0);
     }
 }
 
