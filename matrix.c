@@ -29,11 +29,18 @@ struct matrix * make_bezier() {
     out->m[1][0] = 3;
     out->m[1][1] = -6;
     out->m[1][2] = 3;
+    out->m[1][3] = 0;
     //row 3:
     out->m[2][0] = -3;
     out->m[2][1] = 3;
+    out->m[2][2] = 0;
+    out->m[2][3] = 0;
     //row 4:
     out->m[3][0] = 1;
+    out->m[3][1] = 0;
+    out->m[3][2] = 0;
+    out->m[3][3] = 0;
+
     out->lastcol = 4;
     return out;
 }
@@ -55,9 +62,16 @@ struct matrix * make_hermite() {
   out->m[1][2] = -2;
   out->m[1][3] = -1;
   //row 3:
+  out->m[2][0] = 0;
+  out->m[2][1] = 0;
   out->m[2][2] = 1;
+  out->m[2][3] = 0;
   //row 4:
   out->m[3][0] = 1;
+  out->m[3][1] = 0;
+  out->m[3][2] = 0;
+  out->m[3][3] = 0;
+
   out->lastcol = 4;
   //print_matrix(out);
   return out;

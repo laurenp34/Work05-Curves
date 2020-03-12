@@ -52,14 +52,6 @@ void add_curve( struct matrix *edges,
                 double x2, double y2,
                 double x3, double y3,
                 double step, int type ) {
-    //hermite:
-    if (type == 0) {
-
-    }
-    //bezier:
-    else if (type == 1) {
-
-    }
     struct matrix * x_coefs = generate_curve_coefs(x0,x1,x2,x3,type);
     struct matrix * y_coefs = generate_curve_coefs(y0,y1,y2,y3,type);
     // struct matrix * t_vals = new_matrix(1,4); //stores 1,t,t^2,t^3 (current values)
